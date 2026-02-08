@@ -11,16 +11,25 @@ WORDS = [
 
 # ----- Core scoring logic -----
 def score_guess(guess, secret):
-    pass
+    correct_letters = []
+    for i in range(len(secret)):
+            if guess[i] == secret[i]:
+                correct_letters.append("Y")
+            elif guess[i] in secret:
+                correct_letters.append("O")
+            else:
+                correct_letters.append("X")
+
+    return "".join(correct_letters)
 
 
 # ----- Check guess formatting -----
 def is_valid_guess(guess):
-    
+    return guess.islower() and len(guess) == 5 and guess.isalpha()
 
 # ----- Choose secret word -----
 def choose_secret(words):
-   pass
+   return words[0]
 
 
 
@@ -28,11 +37,26 @@ def choose_secret(words):
 
 # ----- One turn of the game -----
 def play_turn(secret, guess):
-    pass
+    if len(guess) == 5 and guess == guess.lower():
+        return score_guess(guess , secret)
+    else:
+         return "Invalid guess"
 
 
 # ----- Full Wordle game -----
 def play_game(words):
-    pass
+    secret = choose_secret(words)
+
+    for i in range(5):
+
+        guess = input("What is your guess? ")
+        x = play_turn(secret , guess)
+
+        if x == "YYYYY":
+            print("YOU WIN!")
+            break
+
+        print(x)
+    print("Loser!!!!")
 
 

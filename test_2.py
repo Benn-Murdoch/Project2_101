@@ -28,7 +28,7 @@ class TestScoreGuess(unittest.TestCase):
 
     def test_late_occurrence_only(self):
         # 'a' only appears later
-        self.assertEqual(score_guess("abcde", "eabcd"), "OOOOX")
+        self.assertEqual(score_guess("abcde", "eabcd"), "OOOOO")
 
 
 class TestIsValidGuess(unittest.TestCase):
